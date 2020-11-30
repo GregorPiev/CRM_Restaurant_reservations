@@ -1,0 +1,29 @@
+{
+  "name": "crm_restaurant_reservations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "kill": "npx kill-port 5000",
+    "server": "npx nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GregorPiev/CRM_Restaurant_reservations.git"
+  },
+  "keywords": [
+    "Angular",
+    "Express"
+  ],
+  "author": "Gregory Pievski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GregorPiev/CRM_Restaurant_reservations/issues"
+  },
+  "homepage": "https://github.com/GregorPiev/CRM_Restaurant_reservations#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
