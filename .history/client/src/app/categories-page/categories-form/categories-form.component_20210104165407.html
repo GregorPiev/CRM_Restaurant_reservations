@@ -1,0 +1,88 @@
+<div class="page-title">
+  <h4>
+    <a routerLink="/categories">Categories</a>
+    <i class="material-icons">keyboard_arrow_right</i>
+    {{ isNew ? "Add" : "Edit" }} category
+  </h4>
+  <span>
+    <button class="btn btn-small red">
+      <i class="material-icons">delete</i>
+    </button>
+  </span>
+</div>
+
+<div class="row">
+  <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-field">
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        [ngClass]="{
+          invalid: form.get('name').invalid && form.get('name').touched
+        }"
+      />
+      <label for="name">Name</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('name').invalid && form.get('name').touched"
+      >
+        <span *ngIf="form.get('name').errors['required']"
+          >Category name is mandatory value</span
+        >
+      </span>
+    </div>
+
+    <div>
+      <input type="file" class="dn" #input (change)="onFileUpload($event)" />
+      <button
+        type="button"
+        (click)="triggerClick()"
+        [disabled]="form.disabled"
+        class="waves-effect waves-light btn orange lighten-2 mb2"
+      >
+        <i class="material-icons left">backup</i>
+        Ioad image
+      </button>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        [disabled]="form.invalid || form.disabled"
+        class="waves-effect waves-light btn"
+      >
+        Save changes
+      </button>
+    </div>
+  </form>
+
+  <div class="col s12 l4 center">
+    <img
+      class="responsive-img h200"
+      [src]="imagePreview"
+      *ngIf="imagePreview"
+    />
+  </div>
+</div>
+
+<div id="create-modal" class="modal">
+  <div class="modal-content">
+    <h4 class="mb1">Add position</h4>
+    <div class="input-field">
+      <input id="pos-name" type="text" required />
+      <label for="pos-name">Name</label>
+    </div>
+    <div class="input-field">
+      <input id="pos-cost" type="text" required />
+      <label for="pos-cost">Price</label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action waves-effect waves-black btn-flat"
+      >Cancel</a
+    >
+    <button class="modal-action btn waves-effect">Save</button>
+  </div>
+</div>
+<!-- <app-positions-form></app-positions-form> -->

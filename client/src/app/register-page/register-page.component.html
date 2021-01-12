@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="card">
+    <div class="card-content">
+        <span class="card-title">Sign up</span>
+        <div class="input-field">
+            <input id="email" name="email" formControlName="email" #email type="email"
+                [ngClass]="{'invalid': form.get('email').touched && form.get('email').invalid}">
+            <label for="email">Email:</label>
+            <span class="helper-text red-text" *ngIf="form.get('email').touched && form.get('email').invalid">
+                <span *ngIf="form.get('email').errors['required']">Mandatore value</span>
+                <span *ngIf="form.get('email').errors['email']">Invalid value</span>
+            </span>
+        </div>
+        <div class="input-field">
+            <input id="password" name="password" formControlName="password" #password type="password"
+                [ngClass]="{'invalid': form.get('password').touched && form.get('password').invalid}">
+            <label for="password">Password:</label>
+            <span class="helper-text red-text" *ngIf="form.get('password').touched && form.get('password').invalid">
+                <span *ngIf="form.get('password').errors['required']">Mandatore value</span>
+                <span *ngIf="form.get('password').errors['minlength']">Password length must to be at least
+                    {{form.get('password').errors['minlength']['requiredLength']}}
+                    symbols</span>
+            </span>
+        </div>
+    </div>
+    <div class="card-action">
+        <button type="submit" class="modal-action btn waves-effect"
+            [disabled]="form.invalid || form.disabled">Create</button>
+    </div>
+</form>
